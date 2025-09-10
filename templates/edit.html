@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit Profile</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <div class="container mt-5">
+    <div class="card p-4 shadow">
+      <h2 class="text-center text-primary">Edit Profile</h2>
+      <form method="POST" enctype="multipart/form-data">
+        <div class="mb-3"><label class="form-label">Name</label>
+          <input type="text" name="name" class="form-control" value="{{ profile.name }}" required>
+        </div>
+        <div class="mb-3"><label class="form-label">Email</label>
+          <input type="email" name="email" class="form-control" value="{{ profile.email }}" required>
+        </div>
+        <div class="mb-3"><label class="form-label">Age</label>
+          <input type="number" name="age" class="form-control" value="{{ profile.age }}" required>
+        </div>
+        <div class="mb-3"><label class="form-label">Gender</label>
+          <select name="gender" class="form-select" required>
+            <option {{ 'selected' if profile.gender == 'Male' }}>Male</option>
+            <option {{ 'selected' if profile.gender == 'Female' }}>Female</option>
+            <option {{ 'selected' if profile.gender == 'Other' }}>Other</option>
+          </select>
+        </div>
+        <div class="mb-3"><label class="form-label">College</label>
+          <input type="text" name="college" class="form-control" value="{{ profile.college }}" required>
+        </div>
+        <div class="mb-3"><label class="form-label">CGPA</label>
+          <input type="text" name="cgpa" class="form-control" value="{{ profile.cgpa }}" required>
+        </div>
+        <div class="mb-3"><label class="form-label">Skills</label>
+          <input type="text" name="skills" class="form-control" value="{{ profile.skills }}">
+        </div>
+        <div class="mb-3"><label class="form-label">Bio</label>
+          <textarea name="bio" class="form-control">{{ profile.bio }}</textarea>
+        </div>
+        <div class="mb-3"><label class="form-label">Upload New Resume (optional)</label>
+          <input type="file" name="resume" class="form-control">
+          <small>Current: {{ profile.resume_path }}</small>
+        </div>
+        <button type="submit" class="btn btn-success w-100">Update Profile</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
